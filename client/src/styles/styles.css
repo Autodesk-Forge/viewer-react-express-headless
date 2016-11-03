@@ -1,0 +1,29 @@
+.viewerStyle{
+    height: 45%; 
+    width: 100%;
+    position: absolute;
+    /*z-index: 0;*/
+}
+
+.galleryStyle{
+    height: 95%; 
+    width: 100%;
+    position: absolute;
+    background: #3566CC;
+    z-index: -1;
+}
+
+.btnStyle{
+    border-radius: 50px;
+	background-color: #EE8822;
+	width: 75px;
+	height: 75px;
+	position: absolute;
+   	z-index: 2;
+}
+
+body {
+  	margin: 0.5px;
+  	padding: 0;
+  	font-family: sans-serif;
+}
