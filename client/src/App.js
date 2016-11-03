@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Viewer from './Viewer';
 import Gallery from './Gallery';
-import Button from './Button';
 //import './App.css';
 
 class App extends Component {
@@ -35,6 +34,7 @@ class App extends Component {
             <Viewer />
           </div>
           <div className='gallery' style={{ height: '50%', backgroundColor: '#3566CC' }}>
+            <img src={require('./images/rhino-legocar.png')} alt="Rhino Lego" style={{ width:"400", height:"260", marginLeft:'25%', marginTop:'8%'}} />
           </div>
         </div>
       </div>
