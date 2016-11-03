@@ -24,7 +24,7 @@ class App extends Component {
       backgroundColor: '#EE8822', 
       height: '100px', 
       width: '100px',
-
+      border: '5px solid #EE8822'
     }
     return (
       <div className='container' style={{position: 'fixed', height: '100%', width: '100%', padding: '0'}}>
