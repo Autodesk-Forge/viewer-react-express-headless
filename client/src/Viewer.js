@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Client from './Client';
 import Helpers from './Viewer-helpers';
 
+
 var getToken = { accessToken: Client.getaccesstoken()};
 
 class Viewer extends Component {
