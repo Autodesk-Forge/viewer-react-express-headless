@@ -36,25 +36,15 @@ const tilesData = [
     title: 'Revit House',
   },
   {
-    img: 'images/engine.png',
+    img: 'images/fusion-engine.png',
     title: 'Fusion Engine',
+  },
+  {
+    img: 'images/revit-factory.png',
+    title: 'Revit Factory',
   },
  ]
 
-//  const Gallery = () => (
-//   <div style={styles.root}>
-//     <GridList style={styles.gridList} cols={2.2}>
-//       {tilesData.map((tile) => (
-//         <GridTile style={picStyle}
-//           key={tile.img}
-//           title={tile.title}
-//         >
-//           <img src={require('./images/rhino-legocar.png')} />
-//         </GridTile>
-//       ))}
-//     </GridList>
-//   </div>
-// );
 
 class Gallery extends Component {
 

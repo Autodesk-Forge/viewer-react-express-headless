@@ -16,8 +16,17 @@ class Viewer extends Component {
                 env: 'AutodeskProduction',
                 accessToken: myToken.access_token
             };
-            var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L2xlZ28tcmFjZWNhci4zZG0';
-                  
+            //Lego Car
+           // var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L2xlZ28tcmFjZWNhci4zZG0';
+           
+           // Factory
+           // var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0LzNkRmFjdG9yeS5kd2Y'; 
+            
+           // Engine
+            var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1RWUi00LUN5Y2wtZW5naW5lLmYzZA'; 
+
+            
+
             Autodesk.Viewing.Initializer(options, function onInitialized(){
                 Autodesk.Viewing.Document.load(documentId, Helpers.onDocumentLoadSuccess, Helpers.onDocumentLoadFailure);
             })

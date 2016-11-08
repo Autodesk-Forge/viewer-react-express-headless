@@ -1,11 +1,21 @@
 // expand button
 import React, { Component } from 'react';
-import Btn from 'react-bootstrap/lib/Button';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+
+const style = {
+  backgroundColor: '#EE8822',
+
+};
+
 
 class Button extends Component {
   render() {
   	return (
-    	<Btn type="button" className="btnStyle"> Exp </Btn>
+  		<div>
+    		<FloatingActionButton style={style}>	
+    		</FloatingActionButton>
+    	</div>
   	);
   }
 }

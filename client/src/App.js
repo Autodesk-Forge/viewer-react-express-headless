@@ -4,6 +4,7 @@ import Gallery from './Gallery';
 //import './App.css';
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+//import Button from './Button';
 
 
 
@@ -33,7 +34,7 @@ class App extends Component {
     const gallerysliderStyle = { 
       width: '80%',
       position: 'absolute',
-      marginTop: '50px',
+      marginTop: '6%',
       left: '10%'
     }; 
 
