@@ -32,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/jaimerosales/viewer-rocks/issues"
   },
-  "homepage": "https://github.com/jaimerosales/viewer-rocks#readme"
+  "homepage": "https://github.com/jaimerosales/viewer-rocks#readme",
+  "devDependencies": {
+    "font-awesome": "^4.7.0"
+  }
 }

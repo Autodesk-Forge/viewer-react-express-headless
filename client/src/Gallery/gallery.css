@@ -1,0 +1,29 @@
+.forge-gallery {
+  background-color: #3566CC;
+  padding-top: 3.5em;
+}
+
+.forge-gallery .tile {
+  border-radius: 5px;
+  position: relative;
+}
+
+.forge-gallery .tile .tile-avatar {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgb(27, 52, 106);
+  height: auto;
+  max-width: 100%;
+}
+
+.forge-gallery .tile .tile-title {
+  background-color: rgba(80, 80, 80, .5);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  bottom: 0;
+  color: white;
+  font-size: 1em;
+  text-shadow: 1px 1px 1px black;
+  padding: .6em .8em;
+  position: relative;
+  top: -36px;
+}

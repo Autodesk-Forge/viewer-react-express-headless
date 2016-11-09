@@ -22,7 +22,7 @@ function onDocumentLoadSuccess(doc) {
         viewer = new Autodesk.Viewing.Viewer3D(viewerDiv);
         viewer.start(svfUrl, modelOptions, onLoadModelSuccess, onLoadModelError);
 }
-   
+
 /**
 * viewer.loadModel() success callback.
 * Invoked after the model's SVF has been initially loaded.
@@ -50,6 +50,22 @@ function onDocumentLoadFailure(viewerErrorCode) {
     console.error('onDocumentLoadFailure() - errorCode:' + viewerErrorCode);
 }
 
-const Helpers = {onDocumentLoadSuccess , onDocumentLoadFailure};
+export function toggleFullscreen() {
+  viewer.screenModeDelegate.setMode(Autodesk.Viewing.ScreenMode.kNormal)
+  // debugger;
+  // let delegate = new Autodesk.Viewing.AppScreenModeDelegate(viewer);
+  // Autodesk.Viewing.ScreenMode.kFullBrowser
+  // Autodesk.Viewing.ScreenMode.KFullScreen
+  // Autodesk.Viewing.ScreenMode.kNormal
+  // delegate.setMode(Autodesk.Viewing.ScreenMode.KFullScreen);
+  // console.log('delegate', delegate);
+  // delegate.doScreenModeChange();
+  // console.log(delegate.getNextMode());
+}
+
+const Helpers = {
+  onDocumentLoadSuccess,
+  onDocumentLoadFailure,
+};
 
 export default Helpers;

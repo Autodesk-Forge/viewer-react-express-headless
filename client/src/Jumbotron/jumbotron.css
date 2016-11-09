@@ -1,0 +1,69 @@
+.forge-jumbotron {
+  background: #EDEDED;
+  margin: 0;
+  padding: 20px 10px;
+  position: relative;
+}
+
+.forge-jumbotron .container {
+  position: relative;
+  min-height: 450px;
+}
+
+@media (max-width: 768px) {
+  .forge-jumbotron .container {
+    margin-left: 20px;
+    margin-right: 20px;
+    min-height: 250px;
+  }
+}
+
+.forge-jumbotron .forge-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.forge-jumbotron .forge-logo img {
+  width: 300px;
+}
+
+@media (max-width: 768px) {
+  .forge-jumbotron .forge-logo img {
+    width: 150px;
+  }
+}
+
+.forge-jumbotron .forge-viewer {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+.forge-jumbotron .forge-btn {
+  background-color: #EE8822;
+  border: none;
+  border-radius: 50%;
+  bottom: -55px;
+  color: white;
+  font-size: 2em;
+  height: 70px;
+  line-height: 1.8;
+  position: absolute;
+  right: 0;
+  padding: 0;
+  text-align: center;
+  width: 70px;
+  z-index: 2;
+}
+
+.forge-jumbotron .forge-btn:focus {
+  outline: none;
+}
+
+.forge-jumbotron .forge-btn:active {
+  background-color: #b4610e;
+}

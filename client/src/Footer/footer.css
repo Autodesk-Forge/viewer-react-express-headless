@@ -1,0 +1,12 @@
+.forge-footer {
+  color: #999;
+  padding: 1em 0;
+}
+
+.forge-footer .footer-logo {
+  width: 150px;
+}
+
+.forge-footer .footer-copyright {
+  text-align: right;
+}
