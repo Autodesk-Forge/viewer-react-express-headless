@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './jumbotron.css';
 import { viewerResize } from '../Viewer-helpers';
 import Viewer from '../Viewer';
+import classnames from 'classnames';
+import scrollTo from 'scroll-to';
 
 class Jumbotron extends Component {
 
@@ -17,10 +19,16 @@ class Jumbotron extends Component {
 
   onFullscreen() {
     this.setState({ fullscreen: !this.state.fullscreen }, () => {
-      /// toggle fullscreen css class
-      this.state.fullscreen
-        ? document.body.classList.add('fullscreen')
-        : document.body.classList.remove('fullscreen');
+
+      if (this.state.fullscreen) {
+        scrollTo(0, 0, {
+          ease: 'inQuad',
+          duration: 300
+        });
+        document.body.classList.add('fullscreen')
+      } else {
+        document.body.classList.remove('fullscreen');
+      }
 
       // resize viewer after css animation
       setTimeout(() => viewerResize(), 300);
@@ -28,6 +36,12 @@ class Jumbotron extends Component {
   }
 
   render() {
+
+    const buttonClass = classnames({
+      'fa': true,
+      'fa-expand': !this.state.fullscreen,
+      'fa-compress': this.state.fullscreen,
+    });
 
     return (
       <div className="forge-jumbotron">
@@ -37,7 +51,7 @@ class Jumbotron extends Component {
             <img src="images/forge-logo.png" alt="Autodesk Forge" />
           </div>
           <button className="forge-btn" onClick={this.onFullscreen}>
-            <i className="fa fa-plus"></i>
+            <i className={buttonClass}></i>
           </button>
         </div>
       </div>

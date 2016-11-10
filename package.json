@@ -35,6 +35,8 @@
   "homepage": "https://github.com/jaimerosales/viewer-rocks#readme",
   "devDependencies": {
     "bootstrap": "^3.3.7",
-    "font-awesome": "^4.7.0"
+    "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
+    "scroll-to": "0.0.2"
   }
 }

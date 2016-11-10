@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import scrollTo from 'scroll-to';
 import Helpers from '../Viewer-helpers';
 import './gallery.css';
 
@@ -41,6 +42,22 @@ const tilesData = [
 
 class Gallery extends Component {
 
+  onTileSelect(tile, e) {
+    e.preventDefault();
+
+    // Scroll to top
+    scrollTo(0, 0, {
+      ease: 'inQuad',
+      duration: 300
+    });
+
+    // Starts loading once it scrolls
+    setTimeout(
+      () => Helpers.launchViewer("viewerDiv", tile.urn),
+      300
+    );
+  }
+
    render() {
     return (
       <div className="forge-gallery">
@@ -49,7 +66,7 @@ class Gallery extends Component {
             {tilesData.map((tile, index) =>
               (
                 <div className="col-md-4 col-xs-6 tile" key={index}>
-                  <a href="#" onClick={() => Helpers.launchViewer("viewerDiv", tile.urn)}>
+                  <a href="#" onClick={this.onTileSelect.bind(this, tile)}>
                     <img className="tile-avatar" src={tile.img} alt={tile.title} />
                   </a>
                   <div className="tile-title">{tile.title}</div>
