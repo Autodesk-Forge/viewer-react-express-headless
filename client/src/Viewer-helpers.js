@@ -44,8 +44,8 @@ function loadDocument(documentId){
   )
 }
 
-export function toggleFullscreen() {
-
+export function viewerResize() {
+  viewer.resize();
 }
 
 const Helpers = {

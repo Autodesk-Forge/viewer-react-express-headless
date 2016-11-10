@@ -46,9 +46,9 @@ class Gallery extends Component {
       <div className="forge-gallery">
         <div className="container">
           <div className="row">
-            {tilesData.map(tile =>
+            {tilesData.map((tile, index) =>
               (
-                <div className="col-md-4 col-xs-6 tile">
+                <div className="col-md-4 col-xs-6 tile" key={index}>
                   <a href="#" onClick={() => Helpers.launchViewer("viewerDiv", tile.urn)}>
                     <img className="tile-avatar" src={tile.img} alt={tile.title} />
                   </a>

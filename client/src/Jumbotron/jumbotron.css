@@ -6,8 +6,14 @@
 }
 
 .forge-jumbotron .container {
+  height: 60vh;
+  min-height: 200px;
   position: relative;
-  min-height: 450px;
+  transition: all 300ms ease;
+}
+
+.fullscreen .forge-jumbotron .container {
+  height: 100vh;
 }
 
 @media (max-width: 768px) {
@@ -45,18 +51,19 @@
 
 .forge-jumbotron .forge-btn {
   background-color: #EE8822;
-  border: none;
   border-radius: 50%;
-  bottom: -55px;
+  border: none;
+  bottom: -48px;
   color: white;
   font-size: 2em;
-  height: 70px;
+  height: 55px;
   line-height: 1.8;
+  padding: 0;
   position: absolute;
   right: 0;
-  padding: 0;
   text-align: center;
-  width: 70px;
+  transition: all 300ms ease;
+  width: 55px;
   z-index: 2;
 }
 
@@ -66,4 +73,8 @@
 
 .forge-jumbotron .forge-btn:active {
   background-color: #b4610e;
+}
+
+.fullscreen .forge-jumbotron .forge-btn {
+  bottom: 40px;
 }
