@@ -31,7 +31,7 @@ const credentials = (
 );
 
 
-app.set('port', (process.env.API_PORT || 3001));
+app.set('port', (process.env.PORT || 3001));
 app.use(express.static(buildDirectory))
 
 app.get('/', function (req, res) {
