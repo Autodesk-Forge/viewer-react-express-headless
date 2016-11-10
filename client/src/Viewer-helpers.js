@@ -1,71 +1,56 @@
 /* global Autodesk */
+import Client from './Client';
 var viewer;
+var getToken = { accessToken: Client.getaccesstoken()};
 
-function onDocumentLoadSuccess(doc) {
-    console.log('doc load');
-    // Instantiate viewer factory
-    // A document contains references to 3D and 2D viewables.
-        var viewables = Autodesk.Viewing.Document.getSubItemsWithProperties(doc.getRootItem(), {'type':'geometry'}, true);
-        if (viewables.length === 0) {
-            console.error('Document contains no viewables.');
-            return;
-        }
+function launchViewer(div, urn) {
+  console.log("Launching Autodesk Viewer for: " + urn);
+  getToken.accessToken.then((token) => {
+    console.log('new token', token);
+    var options = {
+      'document': urn,
+      'env': 'AutodeskProduction',
+      'accessToken': token.access_token
+      // 'refreshToken': getForgeToken
+    };
 
-        // Choose any of the avialble viewables
-        var initialViewable = viewables[0];
-        var svfUrl = doc.getViewablePath(initialViewable);
-        var modelOptions = {
-            sharedPropertyDbPath: doc.getPropertyDbPath()
-        };
-
-        var viewerDiv = document.getElementById('viewerDiv');
-        viewer = new Autodesk.Viewing.Viewer3D(viewerDiv);
-        viewer.start(svfUrl, modelOptions, onLoadModelSuccess, onLoadModelError);
-}
-
-/**
-* viewer.loadModel() success callback.
-* Invoked after the model's SVF has been initially loaded.
-* It may trigger before any geometry has been downloaded and displayed on-screen.
-*/
-function onLoadModelSuccess(model) {
-    console.log('onLoadModelSuccess()!');
-    console.log('Validate model loaded: ' + (viewer.model === model));
-    console.log(model);
-}
-
-/**
-* viewer.loadModel() failure callback.
-* Invoked when there's an error fetching the SVF file.
-*/
-function onLoadModelError(viewerErrorCode) {
-    console.error('onLoadModelError() - errorCode:' + viewerErrorCode);
+    var viewerElement = document.getElementById(div);
+    viewer = new Autodesk.Viewing.Viewer3D(viewerElement, {});
+    Autodesk.Viewing.Initializer(
+      options,
+      function () {
+        viewer.initialize();
+        loadDocument(options.document);
+      }
+    );
+  })
 }
 
 
-/**
-* Autodesk.Viewing.Document.load() failuire callback.
-*/
-function onDocumentLoadFailure(viewerErrorCode) {
-    console.error('onDocumentLoadFailure() - errorCode:' + viewerErrorCode);
+function loadDocument(documentId){
+  Autodesk.Viewing.Document.load(
+    documentId,
+    function (doc) { // onLoadCallback
+      var geometryItems = Autodesk.Viewing.Document.getSubItemsWithProperties(doc.getRootItem(), {'type':'geometry'}, true);
+      if (geometryItems.length > 0) {
+        geometryItems.forEach(function (item, index) {
+        });
+        viewer.load(doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
+      }
+    },
+    function (errorMsg) { // onErrorCallback
+      console.log(errorMsg);
+    }
+  )
 }
 
 export function toggleFullscreen() {
-  viewer.screenModeDelegate.setMode(Autodesk.Viewing.ScreenMode.kNormal)
-  // debugger;
-  // let delegate = new Autodesk.Viewing.AppScreenModeDelegate(viewer);
-  // Autodesk.Viewing.ScreenMode.kFullBrowser
-  // Autodesk.Viewing.ScreenMode.KFullScreen
-  // Autodesk.Viewing.ScreenMode.kNormal
-  // delegate.setMode(Autodesk.Viewing.ScreenMode.KFullScreen);
-  // console.log('delegate', delegate);
-  // delegate.doScreenModeChange();
-  // console.log(delegate.getNextMode());
+
 }
 
 const Helpers = {
-  onDocumentLoadSuccess,
-  onDocumentLoadFailure,
+  launchViewer,
+  loadDocument
 };
 
 export default Helpers;
