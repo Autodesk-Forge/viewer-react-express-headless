@@ -8,7 +8,9 @@ class Footer extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-6">
-              <img src="images/forge-logo-footer.png" alt="Autodesk Forge" className="footer-logo" />
+              <a href="https://developer.autodesk.com/en/docs/viewer/v2/overview/" >
+                <img src="images/forge-logo-footer.png" alt="Autodesk Forge" className="footer-logo" />
+              </a>
             </div>
             <div className="col-xs-6 footer-copyright">
               2016 Copyright
