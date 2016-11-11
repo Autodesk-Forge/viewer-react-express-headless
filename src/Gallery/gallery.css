@@ -5,6 +5,7 @@
 
 .forge-gallery .tile {
   border-radius: 5px;
+  margin-bottom: 1.8em;
   position: relative;
 }
 
@@ -16,14 +17,15 @@
 }
 
 .forge-gallery .tile .tile-title {
+  bottom: 0;
+  width: calc(100% - 30px);
   background-color: rgba(80, 80, 80, .5);
-  border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   bottom: 0;
   color: white;
   font-size: 1em;
-  text-shadow: 1px 1px 1px black;
   padding: .6em .8em;
-  position: relative;
-  top: -36px;
+  position: absolute;
+  text-shadow: 1px 1px 1px black;
 }
