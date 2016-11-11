@@ -36,6 +36,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-scripts": "^0.7.0",
+    "react-tap-event-plugin": "^1.0.0",
     "scroll-to": "0.0.2"
   },
   "devDependencies": {},
