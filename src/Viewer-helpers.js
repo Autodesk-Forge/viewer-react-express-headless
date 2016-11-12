@@ -40,6 +40,7 @@ function launchViewer(div, urn) {
       function () {
         viewer.initialize();
         loadDocument(options.document);
+        
       }
     );
   })
@@ -54,6 +55,9 @@ function loadDocument(documentId){
       if (geometryItems.length > 0) {
         geometryItems.forEach(function (item, index) {
         });
+        viewer.addEventListener(
+                        Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
+                        onGeometryLoaded);
         viewer.load(doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
       }
     },
@@ -62,6 +66,21 @@ function loadDocument(documentId){
     }
   )
 }
+
+
+//////////////////////////////////////////////////////////////////////////
+// Model Geometry loaded callback
+//
+//////////////////////////////////////////////////////////////////////////
+function onGeometryLoaded(event) {
+        var viewer = event.target;
+        viewer.removeEventListener(
+                Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
+                onGeometryLoaded);
+        viewer.setLightPreset(10);
+        viewer.fitToView();
+    }
+
 
 export function viewerResize() {
   viewer.resize();

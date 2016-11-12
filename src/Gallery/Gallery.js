@@ -29,10 +29,10 @@ const tilesData = [
     urn:'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L2xlZ28tcmFjZWNhci4zZG0'
   },
   {
-    img: 'images/inventor-racecar.png',
-    title: 'Inventor Race Car',
+    img: 'images/fusion-rcar.png',
+    title: 'Fusion Race Car',
     key: '0002',
-    urn: 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0LzFfMTB0aF9zY2FsZV9vbl9yb2FkX2NhciUyME1hdGVyaWFscy56aXA'
+    urn: 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1JDJTIwQ2FyLmYzZA'
   },
   {
     img: 'images/fusion-engine.png',
