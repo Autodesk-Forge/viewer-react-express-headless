@@ -33,6 +33,15 @@ class Jumbotron extends Component {
     }
 
     this.onFullscreen = this.onFullscreen.bind(this);
+    this.onOrientationChange = this.onOrientationChange.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('orientationchange', this.onOrientationChange);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('orientationchange', this.onOrientationChange);
   }
 
   onFullscreen() {
@@ -51,6 +60,10 @@ class Jumbotron extends Component {
       // resize viewer after css animation
       setTimeout(() => viewerResize(), 300);
     });
+  }
+
+  onOrientationChange() {
+    setTimeout(() => viewerResize(), 300);
   }
 
   render() {
