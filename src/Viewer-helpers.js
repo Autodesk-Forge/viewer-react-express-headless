@@ -39,7 +39,9 @@ function launchViewer(div, urn) {
       options,
       function () {
         viewer.initialize();
+        viewer.prefs.tag('ignore-producer')
         loadDocument(options.document);
+        
         
       }
     );
@@ -77,7 +79,7 @@ function onGeometryLoaded(event) {
         viewer.removeEventListener(
                 Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
                 onGeometryLoaded);
-        viewer.setLightPreset(10);
+        //viewer.setLightPreset(10);
         viewer.fitToView();
     }
 
