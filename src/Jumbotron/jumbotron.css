@@ -32,6 +32,13 @@
   }
 }
 
+
+@media (max-width: 768px) {
+  .explode .forge-jumbotron .range-style {
+      width: 50%;
+  }
+}
+
 .forge-jumbotron .forge-logo {
   position: absolute;
   top: 0;
@@ -86,3 +93,112 @@
 .fullscreen .forge-jumbotron .forge-btn {
   bottom: 40px;
 }
+
+.forge-jumbotron .explode-btn {
+  background-color: #878787;
+  border-radius: 50%;
+  border: none;
+  bottom: -48px;
+  color: white;
+  font-size: 2em;
+  height: 55px;
+  line-height: 1.8;
+  padding: 0;
+  position: absolute;
+  right: 70px;
+  text-align: center;
+  transition: all 300ms ease;
+  width: 55px;
+  z-index: 2;
+  visibility: hidden;
+  
+}
+
+.fullscreen .forge-jumbotron .explode-btn {
+  bottom: 40px;
+  visibility: visible;
+}
+
+.forge-jumbotron .explode-btn:focus {
+  outline: none;
+}
+
+
+.forge-jumbotron .properties-btn {
+  background-color: #878787;
+  border-radius: 50%;
+  border: none;
+  bottom: -48px;
+  color: white;
+  font-size: 2em;
+  height: 55px;
+  line-height: 1.8;
+  padding: 0;
+  position: absolute;
+  right: 140px;
+  text-align: center;
+  transition: all 300ms ease;
+  width: 55px;
+  z-index: 2;
+  visibility: hidden;
+}
+
+
+.fullscreen .forge-jumbotron .properties-btn {
+  bottom: 40px;
+  visibility: visible;
+}
+
+.forge-jumbotron .properties-btn:focus {
+  outline: none;
+}
+
+
+
+.forge-jumbotron .range-style {
+  background-color: #878787;
+  bottom: -48px;
+  color: white;
+  font-size: 2em;
+  height: 55px;
+  line-height: 1.8;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  transition: all 300ms ease;
+  width: 55px;
+  right: 0;
+  z-index: 2;
+  visibility: hidden;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.explode .forge-jumbotron .range-style {
+  bottom: 100px;
+  width: 24%;
+  visibility: visible;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+
+.forge-jumbotron .range-span {
+  background-color: transparent;
+  bottom: -48px;
+  color: #3566CC;
+  font-size: 2em;
+  height: 55px;
+  line-height: 1.8;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  transition: all 300ms ease;
+  width: 55px;
+  right: -10px;
+  z-index: 2;
+  visibility: hidden;
+}
+
+/*.explode .forge-jumbotron .range-span {
+  bottom: 140px;
+  visibility: visible;
+}*/
