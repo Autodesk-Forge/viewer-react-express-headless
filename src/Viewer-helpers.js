@@ -33,18 +33,33 @@ function launchViewer(div, urn) {
       // 'refreshToken': getForgeToken
     };
 
+
+    ////// LOCAL ENV SETUP - FOR OFFLINE VIEWING//////
+    // var initOptions = {
+    //   path: Autodesk.Viewing.Private.getParameterByName('path') || '../v8/0.svf',
+    //   env: 'Local'
+    // };
+    //////////////////////////////////////////////////
+
+   // console.log('file path', initOptions.path);
     var viewerElement = document.getElementById(div);
     viewer = new Autodesk.Viewing.Viewer3D(viewerElement, {});
+    
     Autodesk.Viewing.Initializer(
       options,
       function () {
         viewer.initialize();
         viewer.prefs.tag('ignore-producer')
-        loadDocument(options.document);
-        
-        
+        loadDocument(options.document);    
       }
     );
+
+
+    // INIT FOR OFFLINE VIEWING//
+    // viewer.initialize()
+    // viewer.loadModel(initOptions.path)
+    /////////////////////////////
+
   })
 }
 
@@ -81,11 +96,16 @@ function onGeometryLoaded(event) {
                 onGeometryLoaded);
         //viewer.setLightPreset(10);
         viewer.fitToView();
+        //debugger;
     }
 
 
 export function viewerResize() {
   viewer.resize();
+}
+
+export function viewerExplode(num){
+  viewer.explode(num);
 }
 
 const Helpers = {
