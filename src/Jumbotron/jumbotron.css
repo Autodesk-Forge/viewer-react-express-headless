@@ -94,7 +94,7 @@
   bottom: 40px;
 }
 
-.forge-jumbotron .explode-btn {
+.forge-jumbotron .explode-btn, .explode-motion-btn, .rotate-motion-btn, .reset-btn {
   background-color: #878787;
   border-radius: 50%;
   border: none;
@@ -105,13 +105,27 @@
   line-height: 1.8;
   padding: 0;
   position: absolute;
-  right: 70px;
   text-align: center;
-  transition: all 300ms ease;
   width: 55px;
   z-index: 2;
   visibility: hidden;
-  
+  outline: none;
+}
+
+.explode-btn {
+  right: 70px;
+}
+
+.explode-motion-btn {
+  right: 140px;
+}
+
+.rotate-motion-btn {
+  right: 210px;
+}
+
+.reset-btn{
+  right: 280px;
 }
 
 .fullscreen .forge-jumbotron .explode-btn {
@@ -119,41 +133,24 @@
   visibility: visible;
 }
 
-.forge-jumbotron .explode-btn:focus {
-  outline: none;
-}
-
-
-.forge-jumbotron .properties-btn {
-  background-color: #878787;
-  border-radius: 50%;
-  border: none;
-  bottom: -48px;
-  color: white;
-  font-size: 2em;
-  height: 55px;
-  line-height: 1.8;
-  padding: 0;
-  position: absolute;
-  right: 140px;
-  text-align: center;
-  transition: all 300ms ease;
-  width: 55px;
-  z-index: 2;
-  visibility: hidden;
-}
-
-
-.fullscreen .forge-jumbotron .properties-btn {
+.fullscreen .forge-jumbotron .explode-motion-btn {
   bottom: 40px;
   visibility: visible;
 }
 
-.forge-jumbotron .properties-btn:focus {
-  outline: none;
+.fullscreen .forge-jumbotron .rotate-motion-btn {
+  bottom: 40px;
+  visibility: visible;
 }
 
+.fullscreen .forge-jumbotron .reset-btn {
+  bottom: 40px;
+  visibility: visible;
+}
 
+.forge-jumbotron .btn--active, .expbtn--active, .rotbtn--active {
+  background-color: #3566CC;
+}
 
 .forge-jumbotron .range-style {
   background-color: #878787;
@@ -179,26 +176,3 @@
   visibility: visible;
   transition: visibility 0s linear 0s, opacity 300ms;
 }
-
-
-.forge-jumbotron .range-span {
-  background-color: transparent;
-  bottom: -48px;
-  color: #3566CC;
-  font-size: 2em;
-  height: 55px;
-  line-height: 1.8;
-  padding: 0;
-  position: absolute;
-  text-align: center;
-  transition: all 300ms ease;
-  width: 55px;
-  right: -10px;
-  z-index: 2;
-  visibility: hidden;
-}
-
-/*.explode .forge-jumbotron .range-span {
-  bottom: 140px;
-  visibility: visible;
-}*/
