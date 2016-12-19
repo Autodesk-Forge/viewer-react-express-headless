@@ -18,7 +18,7 @@
 
 import React, { Component } from 'react';
 import './jumbotron.css';
-import { viewerResize, viewerExplode, toggleExplosion, toggleRotation, stopMotion  } from '../Viewer-helpers';
+import { viewerResize, viewerExplode, toggleExplosion, toggleRotation, stopMotion, modelRestoreState  } from '../Viewer-helpers';
 import Viewer from '../Viewer';
 import classnames from 'classnames';
 import scrollTo from 'scroll-to';
@@ -134,6 +134,7 @@ class Jumbotron extends Component {
 
   onResetState() {
     stopMotion();
+    modelRestoreState();
   }
 
   render() {

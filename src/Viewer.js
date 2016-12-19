@@ -24,7 +24,7 @@ class Viewer extends Component {
     componentDidMount() {
          //Lego Car
         var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1JDJTIwQ2FyLmYzZA';
-        Helpers.launchViewer('viewerDiv', documentId );        
+        Helpers.launchViewer('viewerDiv', documentId , '0002');        
     }
 
 	render() {

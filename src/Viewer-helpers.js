@@ -29,10 +29,11 @@ var outwardExplosion = true;
 var startRotation = null;
 var rotationReq;
 var isRotating = false;
+var tileId = '0001';
 
 
-function launchViewer(div, urn) {
-  console.log("Launching Autodesk Viewer for: " + urn);
+function launchViewer(div, urn, id) {
+  tileId = id;
   getToken.accessToken.then((token) => {
     console.log('new token', token);
     var options = {
@@ -105,7 +106,7 @@ function onGeometryLoaded(event) {
                 onGeometryLoaded);
         //viewer.setLightPreset(10);
         viewer.fitToView();
-        //debugger;
+       //debugger;
     }
 
 
@@ -115,6 +116,41 @@ export function viewerResize() {
 
 export function viewerExplode(num){
   viewer.explode(num);
+}
+
+export function modelRestoreState(){
+
+  switch (tileId){
+    case "0001":
+      var originalState = JSON.parse('{"guid":"f075a989156eb711398","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1RpZV9GaWd0aGVyX1RveS5mM2Q","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[145.8184640788883,93.51676504768685,-124.19785909734301],"target":[0,0,0.0000019073486328125],"up":[-0.3340034881841154,0.8986169812472194,0.28448056329910826],"worldUpVector":[0,1,0],"pivotPoint":[0,0,0.0000019073486328125],"distanceToOrbit":213.15139804714164,"aspectRatio":1.9929737351528332,"projection":"perspective","isOrthographic":false,"fieldOfView":61.92751520437556},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":10,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');
+      console.log("Restoring State for Tile:", tileId);
+      break;
+    case "0002":
+      var originalState = JSON.parse('{"guid":"f075a989156eb711397","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1JDJTIwQ2FyLmYzZA","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[268.15901156738664,268.1590007567955,268.15899179720685],"target":[0,-0.0000019073486328125,-0.00000762939453125],"up":[0,1,0],"worldUpVector":[0,1,0],"pivotPoint":[0,-0.0000019073486328125,-0.00000762939453125],"distanceToOrbit":464.4650203923889,"aspectRatio":1.9409698157397892,"projection":"orthographic","isOrthographic":true,"orthographicHeight":464.46502039238896},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":10,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');
+      console.log("Restoring State for Tile:", tileId);
+      break;
+    case "0003":
+      var originalState = JSON.parse('{"guid":"f075a989156eb711399","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1RWUi00LUN5Y2wtZW5naW5lLmYzZA","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[947.8717757705549,-947.8718237856292,947.8718169263327],"target":[0,0,0],"up":[0,1,0],"worldUpVector":[0,1,0],"pivotPoint":[0,0,0],"distanceToOrbit":1641.7621261779516,"aspectRatio":2.47171569916115,"projection":"orthographic","isOrthographic":true,"orthographicHeight":1641.7621261779514},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":10,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');
+      console.log("Restoring State for Tile:", tileId);
+      break;
+    case "0004":
+     var originalState = JSON.parse('{"guid":"f075a989156eb711400","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L0hvdXNlLmR3Zng","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[-163.8662266489145,0,101.51004011675508],"target":[0,0,0],"up":[0,1,0],"worldUpVector":[0,1,0],"pivotPoint":[0,0,0],"distanceToOrbit":192.76002822332916,"aspectRatio":2.0663910331477187,"projection":"perspective","isOrthographic":false,"fieldOfView":46.48761986856245},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":7.3109139716724485,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');  
+     console.log("Restoring State for Tile:", tileId);
+      break;
+    case "0005":
+      var originalState = JSON.parse('{"guid":"f075a989156eb711401","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1VyYmFuJTIwSG91c2UlMjAtJTIwMjAxNS5ydnQ","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[71.29038959242611,-71.98501662992042,67.07221817123673],"target":[0,0,-0.0000019073486328125],"up":[0,0,1],"worldUpVector":[0,0,1],"pivotPoint":[0,0,-0.0000019073486328125],"distanceToOrbit":121.50244842685274,"aspectRatio":0.4481514231771144,"projection":"orthographic","isOrthographic":true,"orthographicHeight":121.50244842685272},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":5.211787184833593,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');      
+      console.log("Restoring State for Tile:", tileId);
+      break;
+    case "0006":
+      var originalState = JSON.parse('{"guid":"f075a989156eb711402","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0LzNkRmFjdG9yeS5kd2Y","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[74.02664223103163,-62.794491882241786,57.115458464302066],"target":[0,-9.5367431640625e-7,-2.384185791015625e-7],"up":[0,0,1],"worldUpVector":[0,0,1],"pivotPoint":[0,-9.5367431640625e-7,-2.384185791015625e-7],"distanceToOrbit":112.62889271319895,"aspectRatio":1.8124895442487394,"projection":"perspective","isOrthographic":false,"fieldOfView":28.656461643949527},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":2.7574370487702686,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');
+      console.log("Restoring State for Tile:", tileId);
+      break;      
+    default:
+      console.log("Sorry, no model selected");
+  }
+
+
+viewer.restoreState(originalState, false, false);
 }
 
  /**

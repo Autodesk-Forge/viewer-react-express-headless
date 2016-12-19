@@ -81,7 +81,7 @@ class Gallery extends Component {
 
     // Starts loading once it scrolls
     setTimeout(
-      () => Helpers.launchViewer("viewerDiv", tile.urn),
+      () => Helpers.launchViewer("viewerDiv", tile.urn, tile.key),
       300
     );
   }
