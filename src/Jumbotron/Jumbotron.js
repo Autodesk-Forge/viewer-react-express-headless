@@ -34,7 +34,6 @@ class Jumbotron extends Component {
       expMotion: false,
       rotMotion: false,
       resetState: false,
-      disabled: false,
       value: 0
     }
 
@@ -82,7 +81,6 @@ class Jumbotron extends Component {
 
       // resize viewer after css animation
       setTimeout(() => viewerResize(), 300);
-      //onScreenShot();
     });
   }
 
@@ -94,7 +92,6 @@ class Jumbotron extends Component {
         document.body.classList.remove('explode');
       }
     });
-    
   }
 
   onOrientationChange() {
@@ -102,37 +99,32 @@ class Jumbotron extends Component {
   }
 
   onExplodeAnimation() {
-    this.setState({ expMotion: !this.state.expMotion, disabled: true }, () => {
+    this.setState({ expMotion: !this.state.expMotion}, () => {
       if (this.state.expMotion) {
         document.body.classList.add('explode-motion')
         toggleExplosion();
       } else {
         document.body.classList.remove('explode-motion');
         toggleExplosion();
-        if (this.state.rotMotion === false){
-           this.setState({disabled: false});
-        }
       }
     });
   }
 
   onRotateAnimation() {
-    this.setState({ rotMotion: !this.state.rotMotion, disabled: true }, () => {
+    this.setState({ rotMotion: !this.state.rotMotion }, () => {
       if (this.state.rotMotion) {
         document.body.classList.add('rotate-motion')
         toggleRotation();
       } else {
         document.body.classList.remove('rotate-motion');
         toggleRotation();
-        if (this.state.expMotion === false){
-           this.setState({disabled: false});
-        }
-       
       }
     });
   }
 
   onResetState() {
+    document.body.classList.remove('explode', 'explode-motion', 'rotate-motion');
+    this.setState({explode: false, expMotion: false, rotMotion: false});
     stopMotion();
     modelRestoreState();
   }
@@ -172,17 +164,20 @@ class Jumbotron extends Component {
 
     const explodeBtnClass = classnames({
       'explode-btn': true,
-      'btn--active': this.state.explode
+      'btn--active': this.state.explode,
+      'btn--deactive': !this.state.explode
     })
 
     const explodeMotionBtnClass = classnames({
       'explode-motion-btn': true,
-      'expbtn--active': this.state.expMotion
+      'expbtn--active': this.state.expMotion,
+      'expbtn--deactive': !this.state.expMotion
     })
 
     const rotateMotionBtnClass = classnames({
       'rotate-motion-btn': true,
-      'rotbtn--active': this.state.rotMotion
+      'rotbtn--active': this.state.rotMotion,
+      'rotbtn--deactive': !this.state.rotMotion
     })
 
     const resetBtnClass = classnames({
@@ -211,7 +206,7 @@ class Jumbotron extends Component {
           <button className={rotateMotionBtnClass} onClick={this.onRotateAnimation} >
             <i className={rotateMotionClass}></i>
           </button>
-          <button disabled={this.state.disabled} className={resetBtnClass} onClick={this.onResetState} >
+          <button className={resetBtnClass} onClick={this.onResetState} >
             <i className={resetClass}></i>
           </button>
           <input type="range" 

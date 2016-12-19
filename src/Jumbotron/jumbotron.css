@@ -152,6 +152,10 @@
   background-color: #3566CC;
 }
 
+.forge-jumbotron .btn--deactive, .expbtn--deactive, .rotbtn--deactive {
+  background-color: #878787;
+}
+
 .forge-jumbotron .range-style {
   background-color: #878787;
   bottom: -48px;
