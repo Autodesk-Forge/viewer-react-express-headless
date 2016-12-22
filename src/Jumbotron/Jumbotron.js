@@ -18,10 +18,11 @@
 
 import React, { Component } from 'react';
 import './jumbotron.css';
-import { viewerResize, viewerExplode, toggleExplosion, toggleRotation, stopMotion, modelRestoreState  } from '../Viewer-helpers';
+import { viewerResize, viewerExplode, toggleExplosion, toggleRotation, stopMotion, modelRestoreState, displayProperties } from '../Viewer-helpers';
 import Viewer from '../Viewer';
 import classnames from 'classnames';
 import scrollTo from 'scroll-to';
+import Properties from '../Properties'
 
 class Jumbotron extends Component {
 
@@ -34,6 +35,7 @@ class Jumbotron extends Component {
       expMotion: false,
       rotMotion: false,
       resetState: false,
+      properties: false,
       value: 0
     }
 
@@ -43,6 +45,7 @@ class Jumbotron extends Component {
     this.onRotateAnimation = this.onRotateAnimation.bind(this);
     this.onResetState = this.onResetState.bind(this);
     this.onOrientationChange = this.onOrientationChange.bind(this);
+    this.onPropertiesDisplay = this.onPropertiesDisplay.bind(this);
     this.handleValueChange = this.handleValueChange.bind(this);
    
   }
@@ -81,6 +84,16 @@ class Jumbotron extends Component {
 
       // resize viewer after css animation
       setTimeout(() => viewerResize(), 300);
+    });
+  }
+
+  onPropertiesDisplay(){
+    this.setState({ properties: !this.state.properties }, () => {
+      if (this.state.properties) {
+        document.body.classList.add('properties-show');
+      } else {
+        document.body.classList.remove('properties-show');
+      }
     });
   }
 
@@ -137,10 +150,10 @@ class Jumbotron extends Component {
       'fa-compress': this.state.fullscreen,
     });
 
-    // const propertiesClass = classnames({
-    //   'fa': true,
-    //   'fa-list': this.state.fullscreen,
-    // });
+    const propertiesClass = classnames({
+      'fa': true,
+      'fa-list': this.state.fullscreen,
+    });
 
     const explodeClass = classnames({
       'fa': true,
@@ -161,6 +174,12 @@ class Jumbotron extends Component {
       'fa': true,
       'fa-refresh': this.state.fullscreen,
     });
+
+    const propertiesBtnClass = classnames({
+      'properties-btn': true,
+      'btn--active': this.state.properties,
+      'btn--deactive': !this.state.properties
+    })
 
     const explodeBtnClass = classnames({
       'explode-btn': true,
@@ -185,8 +204,6 @@ class Jumbotron extends Component {
       'resetbtn--deactive': !this.state.rotMotion
     })
 
-   
-
     return (
       <div className="forge-jumbotron">
         <Viewer />
@@ -196,6 +213,9 @@ class Jumbotron extends Component {
           </div>
           <button className="forge-btn" onClick={this.onFullscreen}>
             <i className={buttonClass}></i>
+          </button>
+          <button className={propertiesBtnClass} onClick={this.onPropertiesDisplay} >
+            <i className={propertiesClass}></i>
           </button>
           <button className={explodeBtnClass} onClick={this.onExplode} >
             <i className={explodeClass}></i>
@@ -209,6 +229,7 @@ class Jumbotron extends Component {
           <button className={resetBtnClass} onClick={this.onResetState} >
             <i className={resetClass}></i>
           </button>
+          <Properties className="properties-table" />
           <input type="range" 
               className="range-style"
               min="0" 
@@ -226,6 +247,3 @@ export default Jumbotron;
 
 
 
-// <button className="properties-btn" onClick={this.onFullscreen} >
-          //   <i className={propertiesClass}></i>
-          // </button>

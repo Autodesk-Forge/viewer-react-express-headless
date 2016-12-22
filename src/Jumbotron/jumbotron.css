@@ -94,7 +94,7 @@
   bottom: 40px;
 }
 
-.forge-jumbotron .explode-btn, .explode-motion-btn, .rotate-motion-btn, .reset-btn {
+.forge-jumbotron .explode-btn, .explode-motion-btn, .rotate-motion-btn, .reset-btn, .properties-btn {
   background-color: #878787;
   border-radius: 50%;
   border: none;
@@ -112,20 +112,37 @@
   outline: none;
 }
 
+.forge-jumbotron .properties-table {
+  visibility: hidden;
+}
+
+.fullscreen .forge-jumbotron .properties-table {
+  visibility: visible;
+}
+
+.properties-btn{
+  right: 60px;
+}
+
 .explode-btn {
-  right: 70px;
+  right: 120px;
 }
 
 .explode-motion-btn {
-  right: 140px;
+  right: 180px;
 }
 
 .rotate-motion-btn {
-  right: 210px;
+  right: 240px;
 }
 
 .reset-btn{
-  right: 280px;
+  right: 300px;
+}
+
+.fullscreen .forge-jumbotron .properties-btn {
+  bottom: 40px;
+  visibility: visible;
 }
 
 .fullscreen .forge-jumbotron .explode-btn {

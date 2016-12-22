@@ -30,7 +30,7 @@ var startRotation = null;
 var rotationReq;
 var isRotating = false;
 var tileId = '';
-
+export var properties = {};
 
 function launchViewer(div, urn, id) {
   tileId = id;
@@ -81,10 +81,8 @@ function loadDocument(documentId){
       if (geometryItems.length > 0) {
         geometryItems.forEach(function (item, index) {
         });
-        viewer.addEventListener(
-                        Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
-                        onGeometryLoaded);
-        viewer.addEventListener(Autodesk.Viewing.SELECTION_CHANGED_EVENT, selectionChangedEvent);
+        viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, onGeometryLoaded);
+        viewer.addEventListener(Autodesk.Viewing.SELECTION_CHANGED_EVENT, displayProperties);
         viewer.load(doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
       }
     },
@@ -124,12 +122,12 @@ function selectionChangedEvent() {
           list.push(cprop);
         }
       })
-       var result = groupBy(list, function(prop)
+       properties = groupBy(list, function(prop)
         {
          return [prop.displayCategory];
         }
       )
-       console.log('The result', result);
+       console.log('The result', properties);
     })
     
   }    
@@ -149,6 +147,11 @@ function groupBy( array , f )
   {
     return groups[group]; 
   })
+}
+
+export function displayProperties() {
+  selectionChangedEvent();
+  console.log('inside display properties');
 }
 
 
