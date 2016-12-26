@@ -1,3 +1,26 @@
+.model-properties {
+	background-color: white;
+	padding: .5em 1em;
+	position: absolute;
+  right: 20px;
+  width: 300px;
+  z-index: 2;
+}
+
+.model-properties h3 {
+	margin: .2em 0;
+}
+
+.model-properties ul {
+	margin: 0 0 0 1em;
+	padding: 0;
+}
+
+.model-properties ul li {
+	margin: 0 0 0 .3em;
+	padding: 0;
+}
+
 .tg  {
 	border-collapse:collapse;
 	border-spacing:0;

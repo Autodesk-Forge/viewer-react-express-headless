@@ -18,11 +18,18 @@
 
 import React, { Component } from 'react';
 import './jumbotron.css';
-import { viewerResize, viewerExplode, toggleExplosion, toggleRotation, stopMotion, modelRestoreState, displayProperties } from '../Viewer-helpers';
-import Viewer from '../Viewer';
+import Viewer from '../Viewer/Viewer';
 import classnames from 'classnames';
 import scrollTo from 'scroll-to';
 import Properties from '../Properties'
+import {
+  viewerResize,
+  viewerExplode,
+  toggleExplosion,
+  toggleRotation,
+  stopMotion,
+  modelRestoreState,
+} from '../Viewer/Viewer-helpers';
 
 class Jumbotron extends Component {
 
@@ -47,7 +54,7 @@ class Jumbotron extends Component {
     this.onOrientationChange = this.onOrientationChange.bind(this);
     this.onPropertiesDisplay = this.onPropertiesDisplay.bind(this);
     this.handleValueChange = this.handleValueChange.bind(this);
-   
+    this.onSelectionChange = this.onSelectionChange.bind(this);
   }
 
   componentDidMount() {
@@ -80,6 +87,16 @@ class Jumbotron extends Component {
         if (this.state.explode){
           document.body.classList.remove('explode');
         }
+
+        this.setState({
+          fullscreen: false,
+          explode: false,
+          expMotion: false,
+          rotMotion: false,
+          resetState: false,
+          properties: false,
+          value: 0
+        })
       }
 
       // resize viewer after css animation
@@ -140,6 +157,16 @@ class Jumbotron extends Component {
     this.setState({explode: false, expMotion: false, rotMotion: false});
     stopMotion();
     modelRestoreState();
+  }
+
+  onSelectionChange() {
+    if (!this.state.properties) {
+      return;
+    }
+
+    // this.setState({
+    //
+    // })
   }
 
   render() {
@@ -229,10 +256,16 @@ class Jumbotron extends Component {
           <button className={resetBtnClass} onClick={this.onResetState} >
             <i className={resetClass}></i>
           </button>
-          <Properties className="properties-table" />
-          <input type="range" 
+
+          {
+            this.state.properties
+             ? <Properties />
+             : null
+          }
+
+          <input type="range"
               className="range-style"
-              min="0" 
+              min="0"
               max="100"
               value={this.state.value}
               onChange={this.handleValueChange}
@@ -244,6 +277,3 @@ class Jumbotron extends Component {
 }
 
 export default Jumbotron;
-
-
-
