@@ -14,7 +14,9 @@
 @media (max-width: 768px) {
   .model-properties {
     font-size: 1em;
-
+    width: 60%;
+    top: -15px;
+    right: -10px;
   }
 }
 
