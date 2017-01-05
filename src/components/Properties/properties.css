@@ -1,10 +1,21 @@
 .model-properties {
-	background-color: white;
+	background-color: transparent;
 	padding: .5em 1em;
 	position: absolute;
   right: 20px;
-  width: 300px;
+  width: 20%;
   z-index: 2;
+  max-height: 60%;
+  min-width: 15%;
+  min-height: 25%;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .model-properties {
+    font-size: 1em;
+
+  }
 }
 
 .model-properties h3 {
