@@ -18,7 +18,11 @@
 
 
 /* global Autodesk, THREE */
-import Client from './Client';
+import { debounce, uniq } from 'lodash';
+import { actions } from '../../actions';
+import { store } from '../../store';
+
+import Client from '../Client';
 var viewer;
 var getToken = { accessToken: Client.getaccesstoken()};
 var explodeScale = 0;
@@ -30,6 +34,8 @@ var startRotation = null;
 var rotationReq;
 var isRotating = false;
 var tileId = '';
+export var properties = {};
+
 
 
 function launchViewer(div, urn, id) {
@@ -53,13 +59,13 @@ function launchViewer(div, urn, id) {
    // console.log('file path', initOptions.path);
     var viewerElement = document.getElementById(div);
     viewer = new Autodesk.Viewing.Viewer3D(viewerElement, {});
-    
+
     Autodesk.Viewing.Initializer(
       options,
       function () {
         viewer.initialize();
         viewer.prefs.tag('ignore-producer')
-        loadDocument(options.document);    
+        loadDocument(options.document);
       }
     );
 
@@ -72,7 +78,6 @@ function launchViewer(div, urn, id) {
   })
 }
 
-
 function loadDocument(documentId){
   Autodesk.Viewing.Document.load(
     documentId,
@@ -81,10 +86,20 @@ function loadDocument(documentId){
       if (geometryItems.length > 0) {
         geometryItems.forEach(function (item, index) {
         });
-        viewer.addEventListener(
-                        Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
-                        onGeometryLoaded);
-        viewer.addEventListener(Autodesk.Viewing.SELECTION_CHANGED_EVENT, selectionChangedEvent);
+        viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, onGeometryLoaded);
+        viewer.addEventListener(Autodesk.Viewing.AGGREGATE_SELECTION_CHANGED_EVENT, debounce(() => {
+          console.log('selection change')
+          getModelProperties()
+            .then((modelProperties) =>
+              store.dispatch(actions.getViewerProperties(modelProperties))
+            )
+            .catch(() =>
+              store.dispatch(actions.getViewerProperties([]))
+            )
+        }), 200);
+        // viewer.addEventListener(Autodesk.Viewing.SELECTION_CHANGED_EVENT, () => {
+        // });
+
         viewer.load(doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
       }
     },
@@ -110,47 +125,44 @@ function onGeometryLoaded(event) {
     }
 
 
-function selectionChangedEvent() {
-    var list = [];
-    if (viewer.getSelectionCount() > 1) {
-      console.log('Please select 1 item at a time');
-      return;
+function getModelProperties() {
+  return new Promise((resolve, reject) => {
+    const dbId = viewer.getSelection()[0];
+
+    if (viewer.getSelectionCount() !== 1) {
+      return reject('Invalid selection count');
     }
-    var dbId = viewer.getSelection()[0];
-    viewer.model.getProperties(dbId, function (item) {
-      // I need only the properties that are not set to be hidden
-      item.properties.forEach(function (cprop) {
-        if (cprop.hidden === false) {
-          list.push(cprop);
-        }
-      })
-       var result = groupBy(list, function(prop)
-        {
-         return [prop.displayCategory];
-        }
-      )
-       console.log('The result', result);
+
+    return new Promise((resolve) => {
+      viewer.model.getProperties(dbId, (item) => {
+        const items = item.properties.filter((property) => !property.hidden);
+        resolve(items);
+      });
     })
-    
-  }    
+    .then((list) => {
 
+      // Normalize displayCategory property in case it's falsy
+      list = list.map(item => ({
+        ...item,
+        displayCategory: item.displayCategory || 'Miscellaneous'
+      }));
 
-// Grouping JSON Data by a defined type, in this case displayCategory
-function groupBy( array , f )
-{
-  var groups = {};
-  array.forEach( function( o )
-  {
-    var group = JSON.stringify( f(o) );
-    groups[group] = groups[group] || [];
-    groups[group].push( o );  
+      // Unique list of categories
+      const categories = uniq(list.map(item => item.displayCategory));
+
+      // Model data to be consumed
+      // Ex: [ {category: 'Miscellaneous', data: []} ]
+      const properties = categories.map(category => (
+        {
+          category,
+          data: list.filter(item => item.displayCategory === category)
+        }
+      ));
+
+      resolve(properties);
+    });
   });
-  return Object.keys(groups).map( function( group )
-  {
-    return groups[group]; 
-  })
 }
-
 
 export function viewerResize() {
   viewer.resize();
@@ -177,17 +189,17 @@ export function modelRestoreState(){
       console.log("Restoring State for Tile:", tileId);
       break;
     case "0004":
-      originalState = JSON.parse('{"guid":"f075a989156eb711400","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L0hvdXNlLmR3Zng","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[-163.8662266489145,0,101.51004011675508],"target":[0,0,0],"up":[0,1,0],"worldUpVector":[0,1,0],"pivotPoint":[0,0,0],"distanceToOrbit":192.76002822332916,"aspectRatio":2.0663910331477187,"projection":"perspective","isOrthographic":false,"fieldOfView":46.48761986856245},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":7.3109139716724485,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');  
+      originalState = JSON.parse('{"guid":"f075a989156eb711400","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L0hvdXNlLmR3Zng","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[-163.8662266489145,0,101.51004011675508],"target":[0,0,0],"up":[0,1,0],"worldUpVector":[0,1,0],"pivotPoint":[0,0,0],"distanceToOrbit":192.76002822332916,"aspectRatio":2.0663910331477187,"projection":"perspective","isOrthographic":false,"fieldOfView":46.48761986856245},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":7.3109139716724485,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');
       console.log("Restoring State for Tile:", tileId);
       break;
     case "0005":
-      originalState = JSON.parse('{"guid":"f075a989156eb711401","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1VyYmFuJTIwSG91c2UlMjAtJTIwMjAxNS5ydnQ","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[71.29038959242611,-71.98501662992042,67.07221817123673],"target":[0,0,-0.0000019073486328125],"up":[0,0,1],"worldUpVector":[0,0,1],"pivotPoint":[0,0,-0.0000019073486328125],"distanceToOrbit":121.50244842685274,"aspectRatio":0.4481514231771144,"projection":"orthographic","isOrthographic":true,"orthographicHeight":121.50244842685272},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":5.211787184833593,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');      
+      originalState = JSON.parse('{"guid":"f075a989156eb711401","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1VyYmFuJTIwSG91c2UlMjAtJTIwMjAxNS5ydnQ","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[71.29038959242611,-71.98501662992042,67.07221817123673],"target":[0,0,-0.0000019073486328125],"up":[0,0,1],"worldUpVector":[0,0,1],"pivotPoint":[0,0,-0.0000019073486328125],"distanceToOrbit":121.50244842685274,"aspectRatio":0.4481514231771144,"projection":"orthographic","isOrthographic":true,"orthographicHeight":121.50244842685272},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":5.211787184833593,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');
       console.log("Restoring State for Tile:", tileId);
       break;
     case "0006":
       originalState = JSON.parse('{"guid":"f075a989156eb711402","seedURN":"dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0LzNkRmFjdG9yeS5kd2Y","overrides":{"transformations":[]},"objectSet":[{"id":[],"isolated":[],"hidden":[],"explodeScale":0,"idType":"lmv"}],"viewport":{"name":"","eye":[74.02664223103163,-62.794491882241786,57.115458464302066],"target":[0,-9.5367431640625e-7,-2.384185791015625e-7],"up":[0,0,1],"worldUpVector":[0,0,1],"pivotPoint":[0,-9.5367431640625e-7,-2.384185791015625e-7],"distanceToOrbit":112.62889271319895,"aspectRatio":1.8124895442487394,"projection":"perspective","isOrthographic":false,"fieldOfView":28.656461643949527},"renderOptions":{"environment":"Rim Highlights","ambientOcclusion":{"enabled":false,"radius":2.7574370487702686,"intensity":0.4},"toneMap":{"method":1,"exposure":-9,"lightMultiplier":-1e-20},"appearance":{"ghostHidden":true,"ambientShadow":false,"antiAliasing":true,"progressiveDisplay":true,"displayLines":true}},"cutplanes":[]}');
       console.log("Restoring State for Tile:", tileId);
-      break;      
+      break;
     default:
       console.log("Sorry, no model selected");
   }
@@ -213,7 +225,7 @@ export function toggleExplosion(cancelMotion) {
         isExploding = true;
       }
     }
-    
+
 /**
   * Recursive function for calling requestAnimationFrame for explode motion
 */
@@ -281,7 +293,7 @@ export function toggleRotation(cancelMotion) {
         isRotating = true;
       }
     }
-    
+
  export function stopMotion() {
       toggleExplosion(true);
       toggleRotation(true);

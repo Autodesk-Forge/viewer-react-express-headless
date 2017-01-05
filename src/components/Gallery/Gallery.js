@@ -22,7 +22,7 @@
 
 import React, { Component } from 'react';
 import scrollTo from 'scroll-to';
-import Helpers from '../Viewer-helpers';
+import Helpers from '../Viewer/Viewer-helpers';
 import './gallery.css';
 
 
@@ -45,13 +45,13 @@ const tilesData = [
     key: '0003',
     urn: 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1RWUi00LUN5Y2wtZW5naW5lLmYzZA'
   },
-  
+
   {
     img: 'images/revit-house.png',
     title: 'Revit House',
     key: '0004',
     urn: 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L0hvdXNlLmR3Zng'
-    
+
   },
   {
     img: 'images/urban-house.png',
