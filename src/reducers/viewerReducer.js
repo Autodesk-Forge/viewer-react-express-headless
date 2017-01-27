@@ -12,7 +12,6 @@ export default function viewer(state = initialState, action) {
         ...state,
         properties,
       }
-
     default:
       return state;
   }

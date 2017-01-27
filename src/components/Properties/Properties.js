@@ -35,9 +35,7 @@ class Properties extends Component {
     evt.preventDefault();
     const { collapsed } = this.state;
     const isCollapsed = collapsed.get(propertyIndex);
-
     collapsed.set(propertyIndex, !isCollapsed);
-
     this.setState({ collapsed });
 
   }
@@ -79,9 +77,7 @@ class Properties extends Component {
                       </div>
                       )
                     : null
-                }
-             
-              
+                }              
             </ul>
           ))}     
             

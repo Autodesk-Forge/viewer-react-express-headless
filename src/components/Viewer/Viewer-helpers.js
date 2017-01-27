@@ -48,15 +48,6 @@ function launchViewer(div, urn, id) {
       // 'refreshToken': getForgeToken
     };
 
-
-    ////// LOCAL ENV SETUP - FOR OFFLINE VIEWING//////
-    // var initOptions = {
-    //   path: Autodesk.Viewing.Private.getParameterByName('path') || '../v8/0.svf',
-    //   env: 'Local'
-    // };
-    //////////////////////////////////////////////////
-
-   // console.log('file path', initOptions.path);
     var viewerElement = document.getElementById(div);
     viewer = new Autodesk.Viewing.Viewer3D(viewerElement, {});
 
@@ -68,13 +59,6 @@ function launchViewer(div, urn, id) {
         loadDocument(options.document);
       }
     );
-
-
-    // INIT FOR OFFLINE VIEWING//
-    // viewer.initialize()
-    // viewer.loadModel(initOptions.path)
-    /////////////////////////////
-
   })
 }
 
