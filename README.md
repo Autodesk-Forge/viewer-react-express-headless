@@ -24,6 +24,8 @@ If you try to deploy this on Heroku, we set a `postinstall` script that will run
 
 ## Heroku Deployment
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jaimerosales/viewer-rocks)
+
 To deploy this project to Heroku, be sure to set your environment variables in the dashboard:
 
 - `CONSUMER_KEY`
