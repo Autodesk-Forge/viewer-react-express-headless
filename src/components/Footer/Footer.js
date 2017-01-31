@@ -20,18 +20,16 @@ import React, { Component } from 'react';
 import './footer.css';
 
 class Footer extends Component {
-  render() {
+   render() {
     return (
       <div className="forge-footer">
         <div className="container">
           <div className="row">
             <div className="col-xs-6">
-              <a href="https://developer.autodesk.com/en/docs/viewer/v2/overview/" >
-                <img src="images/forge-logo-footer.png" alt="Autodesk Forge" className="footer-logo" />
-              </a>
+             <a href="https://github.com/jaimerosales/viewer-rocks">View on GitHub <i className="fa fa-github"></i></a>
             </div>
             <div className="col-xs-6 footer-copyright">
-              2016 Copyright
+              &#169; 2016 Copyright Autodesk. All rights reserved.
             </div>
           </div>
         </div>
