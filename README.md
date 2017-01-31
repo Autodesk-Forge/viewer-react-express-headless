@@ -24,7 +24,7 @@ If you try to deploy this on Heroku, we set a `postinstall` script that will run
 
 ## Heroku Deployment
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jaimerosales/viewer-rocks)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 To deploy this project to Heroku, be sure to set your environment variables in the dashboard:
 
@@ -38,3 +38,17 @@ Then be sure to have the [Heroku Toolbelt](https://devcenter.heroku.com/articles
 To deploy, be sure to commit your changes and run:
 
 `git push heroku master`
+
+--------
+
+## License
+
+This sample is licensed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+Please see the [LICENSE](LICENSE) file for full details.
+
+
+## Written by
+
+Jaime Rosales D.<br />
+Forge Partner Development <br />
+http://developer.autodesk.com/ <br />
