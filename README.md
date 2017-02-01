@@ -1,6 +1,14 @@
 # Viewer Rocks - React Front End by Jaime Rosales
 
-Visualize 3D objects using our Viewer.
+Using Forge Viewer, you have the option of a Headless one, the option to add your own logo and get rid of extension that interact with the viewer is possible. 
+I created a demonstration of this scenario using React on the Front End, Redux to handle states for Properties metadata access and NodeJS (Express) together with React-Scripts to handle the authentication and access to the use of the Forge services. 
+
+The available Extensions once in Full Screen mode are.
+- Properties (Categories are display with the option to expand to see all metadata available from the model)
+- Explode Slider
+- Explode Animation
+- Rotate Animation
+- Restate of the model to original form
 
 ## Setup
 
@@ -24,20 +32,12 @@ If you try to deploy this on Heroku, we set a `postinstall` script that will run
 
 ## Heroku Deployment
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 To deploy this project to Heroku, be sure to set your environment variables in the dashboard:
 
-- `CONSUMER_KEY`
-- `CONSUMER_SECRET`
+- `FORGE_CLIENT_ID`
+- `FORGE_CLIENT_SECRET`
 
-Then be sure to have the [Heroku Toolbelt](https://devcenter.heroku.com/articles/heroku-command-line) installed on your machine and run this command the first time to get things set up:
-
-`heroku git:remote -a [heroku-project-name]`
-
-To deploy, be sure to commit your changes and run:
-
-`git push heroku master`
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 --------
 
@@ -51,4 +51,5 @@ Please see the [LICENSE](LICENSE) file for full details.
 
 Jaime Rosales D.<br />
 Forge Partner Development <br />
-http://developer.autodesk.com/ <br />
+<a href="http://developer.autodesk.com/">Forge Developer Portal</a> <br />
+<a href="https://twitter.com/afrojme" class="twitter-follow-button" data-show-count="false">Tweet me @Afrojme</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
