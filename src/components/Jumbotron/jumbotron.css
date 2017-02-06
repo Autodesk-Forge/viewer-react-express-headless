@@ -2,7 +2,7 @@
 and (min-device-width : 768px) 
 and (max-device-width : 1024px)  { /* STYLES GO HERE */
   .fullscreen .forge-jumbotron .container{
-    top: -15px;
+    top: -50px;
  }
 }
 
