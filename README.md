@@ -52,4 +52,4 @@ Please see the [LICENSE](LICENSE) file for full details.
 Jaime Rosales D.<br />
 Forge Partner Development <br />
 <a href="http://developer.autodesk.com/">Forge Developer Portal</a> <br />
-<a href="https://twitter.com/afrojme" class="twitter-follow-button" data-show-count="false">Tweet me @Afrojme</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/afrojme" class="twitter-follow-button" data-show-count="false">Tweet me @Afrojme</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

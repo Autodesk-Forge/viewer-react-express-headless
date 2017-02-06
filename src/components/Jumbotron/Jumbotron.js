@@ -84,6 +84,7 @@ class Jumbotron extends Component {
         document.body.classList.add('fullscreen')
       } else {
         document.body.classList.remove('fullscreen');
+        this.onResetState();
         if (this.state.explode){
           document.body.classList.remove('explode');
         }
@@ -234,10 +235,10 @@ class Jumbotron extends Component {
     return (
       <div className="forge-jumbotron">
         <Viewer />
-        <div className="container">
-          <div className="forge-logo">
+        <div className="forge-logo">
             <img src="images/forge-logo.png" alt="Autodesk Forge" />
-          </div>
+        </div>
+        <div className="container safari-only">
           <button className="forge-btn" onClick={this.onFullscreen}>
             <i className={buttonClass}></i>
           </button>

@@ -25,7 +25,7 @@ const credentials = (
   require ('fs').existsSync(path.join(__dirname, 'credentials.js'))
     ? require ('./credentials')
     : (
-        console.log('No credentials.js file present, assuming using CONSUMERKEY & CONSUMERSECRET system variables.'),
+        console.log('No credentials.js file present, assuming using FORGE_CLIENT_ID & FORGE_CLIENT_SECRET system variables.'),
         require ('./credentials_')
       )
 );
@@ -36,7 +36,6 @@ app.use(express.static(buildDirectory))
 app.get('/', function (req, res) {
   res.sendFile(`${buildDirectory}/index.html`)
 })
-
 app.get ('/token', function (req, res) {
   request.post(
     credentials.Authentication,

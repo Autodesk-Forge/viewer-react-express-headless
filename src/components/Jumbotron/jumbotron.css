@@ -1,3 +1,97 @@
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { /* STYLES GO HERE */
+  .fullscreen .forge-jumbotron .container{
+    top: -15px;
+ }
+}
+
+@media screen and (max-width: 768px) {
+  .forge-jumbotron .container {
+    margin-left: 20px;
+    margin-right: 20px;
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fullscreen .forge-jumbotron .container {
+      height: 100vh;
+      width: 90vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .explode .forge-jumbotron .range-style {
+      width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .forge-jumbotron .forge-logo img {
+    width: 200px !important;
+  }
+}
+
+/*Iphone 5 & 5s*/
+@media (min-device-width : 320px) 
+and (max-device-width : 568px) { /* STYLES GO HERE */
+.forge-jumbotron .forge-logo img {
+    width: 200px !important;
+  }
+/*
+.forge-jumbotron .forge-btn, .explode-btn, .explode-motion-btn, .rotate-motion-btn, .reset-btn, .properties-btn{
+  font-size: 1.2em !important;
+  height: 35px !important;
+  width: 35px !important;
+}
+
+.properties-btn{
+  right: 40px !important;
+}
+
+.explode-btn {
+  right: 80px !important;
+}
+
+.explode-motion-btn {
+  right: 120px !important;
+}
+
+.rotate-motion-btn {
+  right: 160px !important;
+}
+
+.reset-btn{
+  right: 200px !important;
+}*/
+
+}
+
+/*Iphone 6 plus*/
+@media only screen 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) { /* STYLES GO HERE */
+  .forge-jumbotron .forge-logo img {
+    width: 200px !important;
+  }
+
+  .fullscreen .forge-jumbotron .container{
+    top: -50px;
+  }
+
+/*  Suppose to handle Safari browser
+  ::i-block-chrome, .forge-jumbotron .container{
+    top: -50px;
+  }*/
+
+ .forge-jumbotron .forge-logo {
+    top: 30px !important;
+ }
+}
+
+/* CSS for non mobile devices */
+
 .forge-jumbotron {
   background: #EDEDED;
   margin: 0;
@@ -17,32 +111,11 @@
   width: 90vw;
 }
 
-@media (max-width: 768px) {
-  .forge-jumbotron .container {
-    margin-left: 20px;
-    margin-right: 20px;
-    min-height: 250px;
-  }
-}
-
-@media (max-width: 768px) {
-  .fullscreen .forge-jumbotron .container {
-      height: 100vh;
-      width: 90vw;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .explode .forge-jumbotron .range-style {
-      width: 50%;
-  }
-}
 
 .forge-jumbotron .forge-logo {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 20px;
+  left: 30px;
   z-index: 2;
 }
 
@@ -50,11 +123,6 @@
   width: 300px;
 }
 
-@media (max-width: 768px) {
-  .forge-jumbotron .forge-logo img {
-    width: 150px;
-  }
-}
 
 .forge-jumbotron .forge-viewer {
   bottom: 0;
