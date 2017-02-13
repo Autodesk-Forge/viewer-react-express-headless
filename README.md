@@ -1,4 +1,4 @@
-# Viewer Rocks - React Front End by Jaime Rosales
+# Viewer Rocks - React
 
 [![Node.js](https://img.shields.io/badge/Node.js-4.4.0-blue.svg)](https://nodejs.org/)
 [![npm](https://img.shields.io/badge/npm-3.10.7-green.svg)](https://www.npmjs.com/)
@@ -63,7 +63,8 @@ Please see the [LICENSE](LICENSE) file for full details.
 
 ## Written by
 
-Jaime Rosales D.<br />
+Jaime Rosales D. <br /> 
+[![Twitter Follow](https://img.shields.io/twitter/follow/afrojme.svg?style=social&label=Follow @Afrojme)](https://twitter.com/afrojme) <br />
 Forge Partner Development <br />
 <a href="http://developer.autodesk.com/">Forge Developer Portal</a> <br />
-<a href="https://twitter.com/afrojme" class="twitter-follow-button" data-show-count="false">Tweet me @Afrojme</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
