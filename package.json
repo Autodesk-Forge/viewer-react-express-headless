@@ -17,10 +17,10 @@
   "proxy": "http://localhost:3001/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaimerosales/viewer-rocks.git"
+    "url": "git+https://github.com/jaimerosales/viewer-react-express-headless.git"
   },
   "bugs": {
-    "url": "https://github.com/jaimerosales/viewer-rocks/issues"
+    "url": "https://github.com/jaimerosales/viewer-react-express-headless/issues"
   },
   "dependencies": {
     "axios": "^0.15.2",

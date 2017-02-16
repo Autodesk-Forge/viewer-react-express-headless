@@ -1,8 +1,8 @@
 {
-  "name": "viewer-rocks",
+  "name": "viewer-react-express-headless",
   "description": "A React and Node JS (express) sample demonstrating the use of Forge Headless Viewer and custom made extensions.",
-  "repository": "https://github.com/jaimerosales/viewer-rocks.git",
-  "logo": "https://github.com/jaimerosales/viewer-rocks/raw/master/public/images/adsk.24x24.png",
+  "repository": "https://github.com/jaimerosales/viewer-react-express-headless.git",
+  "logo": "https://github.com/jaimerosales/viewer-react-express-headless/raw/master/public/images/adsk.24x24.png",
   "keywords": [ "node", "forge", "autodesk", "react" ],
   "website": "https://developer.autodesk.com/",
   "env": {
