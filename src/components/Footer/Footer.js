@@ -26,7 +26,7 @@ class Footer extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-6">
-             <a href="https://github.com/jaimerosales/viewer-rocks">View on GitHub <i className="fa fa-github"></i></a>
+             <a href="https://github.com/jaimerosales/viewer-react-express-headless">View on GitHub <i className="fa fa-github"></i></a>
             </div>
             <div className="col-xs-6 footer-copyright">
               &#169; 2016 Copyright Autodesk. All rights reserved.
