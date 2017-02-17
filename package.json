@@ -13,7 +13,7 @@
     "postinstall": "npm run build"
   },
   "author": "Jaime Rosales",
-  "license": "ISC",
+  "license": "MIT",
   "proxy": "http://localhost:3001/",
   "repository": {
     "type": "git",
