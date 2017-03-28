@@ -103,7 +103,6 @@ function onGeometryLoaded(event) {
         viewer.removeEventListener(
                 Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
                 onGeometryLoaded);
-        //viewer.setLightPreset(10);
         viewer.fitToView();
         viewer.setQualityLevel(false,false); // Getting rid of Ambientshadows to false to avoid blackscreen problem in Viewer.
        //debugger;
