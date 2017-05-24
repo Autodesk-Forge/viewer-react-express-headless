@@ -24,7 +24,7 @@ var credentials ={
 		client_id: process.env.FORGE_CLIENT_ID || '<replace with your consumer key>',
 		client_secret: process.env.FORGE_CLIENT_SECRET || '<replace with your consumer secret>',
 		grant_type: 'client_credentials',
-		scope: 'data:read', // Setup the needed scopes for authorizing your Token
+		scope: 'viewables:read', // Setup the needed scopes for authorizing your Token
 		callbackUrl: process.env.CALLBACK_URL || '<replace with your callbackUrl>'
 	},
 	

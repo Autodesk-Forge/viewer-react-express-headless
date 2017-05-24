@@ -81,8 +81,6 @@ function loadDocument(documentId){
               store.dispatch(actions.getViewerProperties([]))
             )
         }), 200);
-        // viewer.addEventListener(Autodesk.Viewing.SELECTION_CHANGED_EVENT, () => {
-        // });
 
         viewer.load(doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
       }
@@ -105,7 +103,6 @@ function onGeometryLoaded(event) {
                 onGeometryLoaded);
         viewer.fitToView();
         viewer.setQualityLevel(false,false); // Getting rid of Ambientshadows to false to avoid blackscreen problem in Viewer.
-       //debugger;
     }
 
 
