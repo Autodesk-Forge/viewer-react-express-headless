@@ -170,6 +170,10 @@ class Jumbotron extends Component {
     // })
   }
 
+  handlePropertiesClose = () => {
+    this.setState({ properties: false })
+  }
+
   render() {
 
     const buttonClass = classnames({
@@ -260,7 +264,7 @@ class Jumbotron extends Component {
 
           {
             this.state.properties
-             ? <Properties />
+             ? <Properties onClose={this.handlePropertiesClose} />
              : null
           }
 

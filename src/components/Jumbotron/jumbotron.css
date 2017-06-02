@@ -69,16 +69,21 @@ and (max-device-width : 568px) { /* STYLES GO HERE */
 }
 
 /*Iphone 6 plus*/
-@media only screen 
-and (min-device-width : 414px) 
-and (max-device-width : 736px) { /* STYLES GO HERE */
+/*@media (min-width : 414px) 
+and (max-width : 736px)*/
+
+@media screen and (max-width: 736px) { /* STYLES GO HERE */
   .forge-jumbotron .forge-logo img {
     width: 200px !important;
   }
 
-  .fullscreen .forge-jumbotron .container{
-    top: -50px;
+  .fullscreen .forge-jumbotron {
+    height: 100vh;
   }
+  
+  .fullscreen .forge-jumbotron .container{
+    bottom: 5px;
+ }
 
 /*  Suppose to handle Safari browser
   ::i-block-chrome, .forge-jumbotron .container{
@@ -163,7 +168,7 @@ and (max-device-width : 736px) { /* STYLES GO HERE */
 }
 
 .forge-jumbotron .explode-btn, .explode-motion-btn, .rotate-motion-btn, .reset-btn, .properties-btn {
-  background-color: #878787;
+  background-color: rgba(135,135,135, 0.6);
   border-radius: 50%;
   border: none;
   bottom: -48px;
@@ -234,15 +239,15 @@ and (max-device-width : 736px) { /* STYLES GO HERE */
 }
 
 .forge-jumbotron .btn--active, .expbtn--active, .rotbtn--active {
-  background-color: #3566CC;
+  background-color: rgba(53,102,204, 0.9);
 }
 
 .forge-jumbotron .btn--deactive, .expbtn--deactive, .rotbtn--deactive {
-  background-color: #878787;
+  background-color: rgba(135,135,135, 0.6);
 }
 
 .forge-jumbotron .range-style {
-  background-color: #878787;
+  background-color: rgba(135,135,135, 0.8);
   bottom: -48px;
   color: white;
   font-size: 2em;

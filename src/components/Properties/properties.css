@@ -2,21 +2,57 @@
 	background-color: transparent;
 	padding: .5em 1em;
 	position: absolute;
-  right: 20px;
-  width: 20%;
-  z-index: 2;
-  max-height: 60%;
-  min-width: 15%;
-  min-height: 25%;
-  overflow-y: auto;
+	right: 20px;
+	width: 20%;
+	z-index: 2;
+  	max-height: 60%;
+  	min-width: 15%;
+  	min-height: 25%;
+  	overflow-y: auto;
+}
+
+.model-properties .close-btn {
+	visibility: hidden;
 }
 
 @media (max-width: 768px) {
   .model-properties {
     font-size: 1em;
-    width: 60%;
-    top: -15px;
-    right: -10px;
+    width: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .8);
+    position: fixed;
+    height: auto;
+    max-height: 100vh;
+    padding: 2em;
+  }
+
+  .model-properties > div {
+  	background: rgba(255, 255, 255, .8);
+  	padding: 2em;
+  	color: black;
+  }
+
+  .model-properties .close-btn {
+	border-radius: 50%;
+	border: none;
+	color: white;
+	font-size: 2em;
+	height: 55px;
+	line-height: 1.8;
+	outline: none;
+	padding: 0;
+	position: absolute;
+	right: 10px;
+	text-align: center;
+	top: 10px;
+	width: 55px;
+	z-index: 2;
+	visibility: visible;
+  	background-color: rgba(135,135,135, 0.8);
   }
 }
 
@@ -49,9 +85,9 @@
 	border-width:0px;
 	overflow:hidden;
 	word-break:normal;
-	border-color:#ccc;
+	
 	color:#333;
-	background-color:#fff;
+	
 	border-top-width:1px;
 	border-bottom-width:1px;
 	position: relative;
@@ -66,9 +102,9 @@
 	border-width:0px;
 	overflow:hidden;
 	word-break:normal;
-	border-color:#ccc;
+	
 	color:#333;
-	background-color:#f0f0f0;
+	
 	border-top-width:1px;
 	border-bottom-width:1px;
 	position: relative;

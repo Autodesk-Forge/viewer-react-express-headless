@@ -46,20 +46,20 @@ class Properties extends Component {
 
 		return(
     <div className="model-properties">
+      <div>
+        <button className="close-btn" onClick={this.props.onClose}><i className="fa fa-close" /></button>
         <h3>Properties</h3>
 
         {!this.props.properties.length
           ? <p><em>Select a part to get started</em></p>
           : null
         }
-
-        <div className="panel-group">
-          <div className="panel panel-default">
-           
+        <div>
+          <div>
             {this.props.properties.map((property, i) => (
              <ul key={i}>
-             <div className="panel-heading">
-                <h4 className="panel-title">
+             <div >
+                <h4 >
                   <a data-toggle="collapse" href="#" onClick={this.toggleProperty.bind(this, i)}>{property.category}</a>
                 </h4>
               </div>     
@@ -67,9 +67,9 @@ class Properties extends Component {
                   collapsed.get(i)
                     ? (
                       <div>
-                        <ul className="list-group">
+                        <ul>
                             {property.data.map((item, itemIndex) => (
-                              <li key={itemIndex} className="list-group-item">
+                              <li key={itemIndex} >
                                 <strong>{item.displayName}:</strong> {item.displayValue}
                               </li>
                             ))}
@@ -82,6 +82,7 @@ class Properties extends Component {
           ))}     
             
           </div>
+        </div>
         </div>
       </div>
 		)
