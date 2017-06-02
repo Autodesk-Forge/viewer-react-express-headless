@@ -31,13 +31,36 @@ class Properties extends Component {
   }
 
   toggleProperty(propertyIndex, evt) {
-
     evt.preventDefault();
     const { collapsed } = this.state;
     const isCollapsed = collapsed.get(propertyIndex);
-    collapsed.set(propertyIndex, !isCollapsed);
-    this.setState({ collapsed });
 
+    this.setPropertyByIndex(propertyIndex, !isCollapsed);
+  }
+
+  setPropertyByIndex(index, isCollapsed) {
+    const { collapsed } = this.state;
+    collapsed.set(index, true);
+    this.setState({ collapsed });
+  }
+
+  componentDidMount() {
+    if (this.props.properties.length === 1) {
+      this.setPropertyByIndex(0, true);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { properties } = this.props
+    
+
+    if (prevProps.properties === properties) {
+      return
+    }
+
+    if (properties.length === 1) {
+      this.setPropertyByIndex(0, true);
+    }
   }
 
 
