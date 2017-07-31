@@ -8,7 +8,7 @@
   "env": {
 	"FORGE_CLIENT_ID": {
 	  "description": "Replace with your FORGE CLIENT ID KEY",
-	  "generator": "public"
+	  "generator": "secret"
 	},
 	"FORGE_CLIENT_SECRET": {
 	  "description": "Replace with your FORGE CLIENT SECRET KEY",
