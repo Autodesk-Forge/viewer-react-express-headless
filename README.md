@@ -22,7 +22,7 @@ The available Extensions once in Full Screen mode are.
 
 This sample show a simple integration of the [Viewer](https://developer.autodesk.com/en/docs/viewer/v2/overview/) in a headless way with custom made extensions. The front-end will look like:
   
-![](public/images/viewer-rocks-preview.png) 
+![thumbnail](public/images/viewer-rocks-preview.png) 
 
 ## Setup
 
