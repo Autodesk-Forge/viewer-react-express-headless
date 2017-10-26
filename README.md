@@ -1,12 +1,12 @@
 # Viewer - React - Express - Headless
 
-[![Node.js](https://img.shields.io/badge/Node.js-4.4.0-blue.svg)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-6.7.0-blue.svg)](https://nodejs.org/)
 [![npm](https://img.shields.io/badge/npm-3.10.7-green.svg)](https://www.npmjs.com/)
 ![Platforms](https://img.shields.io/badge/platform-windows%20%7C%20osx%20%7C%20linux-lightgray.svg)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://opensource.org/licenses/MIT)
 
 [![oAuth2](https://img.shields.io/badge/oAuth2-v1-green.svg)](http://developer.autodesk.com/)
-[![Viewer](https://img.shields.io/badge/Viewer-v2-green.svg)](http://developer.autodesk.com/) 
+[![Viewer](https://img.shields.io/badge/Viewer-v3.2-green.svg)](http://developer.autodesk.com/) 
 
 ## Description
 
