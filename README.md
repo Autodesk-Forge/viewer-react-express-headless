@@ -21,7 +21,9 @@ The available Extensions once in Full Screen mode are.
 - Restate of the model to original form
 
 This sample show a simple integration of the [Viewer](https://developer.autodesk.com/en/docs/viewer/v2/overview/) in a headless way with custom made extensions. The front-end will look like:
-  
+
+### Thumbnail
+
 ![thumbnail](public/images/viewer-rocks-preview.png) 
 
 ## Setup
