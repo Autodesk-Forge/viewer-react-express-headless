@@ -6,7 +6,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://opensource.org/licenses/MIT)
 
 [![oAuth2](https://img.shields.io/badge/oAuth2-v1-green.svg)](http://developer.autodesk.com/)
-[![Viewer](https://img.shields.io/badge/Viewer-v3.2-green.svg)](http://developer.autodesk.com/) 
+[![Viewer](https://img.shields.io/badge/Viewer-v3.3-green.svg)](http://developer.autodesk.com/) 
 
 ## Description
 
@@ -27,6 +27,16 @@ This sample show a simple integration of the [Viewer](https://developer.autodesk
 ![thumbnail](public/images/viewer-rocks-preview.png) 
 
 ## Setup
+
+The 6 models will need to translated and hosted on your own bucket. This will change the URN values that will need to be subtitued here. 
+[URN Gallery JSON](https://github.com/Autodesk-Forge/viewer-react-express-headless/blob/master/src/components/Gallery/Gallery.js#L29)
+
+Feel free to use your own models in the Gallery. 
+
+### Note Restore State
+
+The Restore State functionality is hardcoded for the specific models. You will need to get the State for each of your models and pass the new JSON value at this location 
+[Restore State JSON](https://github.com/Autodesk-Forge/viewer-react-express-headless/blob/master/src/components/Viewer/Viewer-helpers.js#L156) 
 
 ### Development mode
 
