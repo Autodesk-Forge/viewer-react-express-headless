@@ -44,7 +44,7 @@ Follow these instructions to get the app running locally:
 
 1. run `git clone` this repository
 1. `cd` into the project's directory
-1. create a file called `server/credentials.js` with your credentials, [follow this template](https://github.com/jaimerosales/viewer-rocks/blob/master/server/credentials_.js)
+1. create a file called `server/credentials.js` with your credentials, [follow this template](https://github.com/Autodesk-Forge/viewer-react-express-headless/blob/master/server/credentials_.js)
 1. run `npm install`
 1. run `npm run watch`
 
