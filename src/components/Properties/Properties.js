@@ -83,7 +83,7 @@ class Properties extends Component {
              <ul key={i}>
              <div >
                 <h4 >
-                  <a data-toggle="collapse" href="#" onClick={this.toggleProperty.bind(this, i)}>{property.category}</a>
+                  <a data-toggle="collapse" onClick={this.toggleProperty.bind(this, i)}>{property.category}</a>
                 </h4>
               </div>     
                 {
