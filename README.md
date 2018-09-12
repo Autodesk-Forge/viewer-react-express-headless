@@ -24,7 +24,7 @@ This sample show a simple integration of the [Viewer](https://developer.autodesk
 
 ### Thumbnail
 
-![thumbnail](public/images/viewer-rocks-preview.png) 
+![thumbnail](/thumbnail.png) 
 
 ## Setup
 
