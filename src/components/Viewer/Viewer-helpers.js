@@ -66,10 +66,7 @@ function loadDocument(documentId){
   Autodesk.Viewing.Document.load(
     documentId,
     function (doc) { // onLoadCallback
-      var geometryItems = Autodesk.Viewing.Document.getSubItemsWithProperties(doc.getRootItem(), {'type':'geometry'}, true);
-      if (geometryItems.length > 0) {
-        geometryItems.forEach(function (item, index) {
-        });
+
         viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, onGeometryLoaded);
         viewer.addEventListener(Autodesk.Viewing.AGGREGATE_SELECTION_CHANGED_EVENT, debounce(() => {
           console.log('selection change')
@@ -82,8 +79,7 @@ function loadDocument(documentId){
             )
         }), 200);
 
-        viewer.load(doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
-      }
+        viewer.loadDocumentNode(doc, doc.getRoot().getDefaultGeometry()); // show 1st view on this document...
     },
     function (errorMsg) { // onErrorCallback
       console.log(errorMsg);
