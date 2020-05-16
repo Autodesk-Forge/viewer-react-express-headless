@@ -24,8 +24,6 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
     "babel-preset-es2015": "6.3.13",
     "babel-preset-stage-0": "6.5.0",
     "bootstrap": "^4.5.0",
@@ -41,7 +39,10 @@
     "redux": "^3.6.0",
     "scroll-to": "0.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6"
+  },
   "babel": {
     "presets": [
       "es2015",
