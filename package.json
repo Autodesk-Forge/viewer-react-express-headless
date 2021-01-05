@@ -23,7 +23,7 @@
     "url": "https://github.com/Autodesk-Forge/viewer-react-express-headless/issues"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-preset-es2015": "6.3.13",
     "babel-preset-stage-0": "6.5.0",
     "bootstrap": "^4.5.0",
