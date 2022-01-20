@@ -82,7 +82,10 @@ function loadDocument(documentId){
             )
         }), 200);
 
-        viewer.load(doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
+        // If you want to display the edges of your models, set displayEdges to true
+        let displayEdges = true;
+        viewer.loadModel(doc.getViewablePath(geometryItems[0]), { isAEC: displayEdges }); // show 1st view on this document...
+        viewer.setDisplayEdges(displayEdges)
       }
     },
     function (errorMsg) { // onErrorCallback
