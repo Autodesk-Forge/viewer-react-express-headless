@@ -24,7 +24,8 @@ class Viewer extends Component {
     componentDidMount() {
         // RC Car Model
         var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1JDJTIwQ2FyLmYzZA';
-        Helpers.launchViewer('viewerDiv', documentId , '0002');        
+        Helpers.launchViewer('viewerDiv', documentId , '0002');   
+          
     }
 
 	render() {
