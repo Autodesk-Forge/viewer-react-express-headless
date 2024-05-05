@@ -24,7 +24,6 @@ import { store } from '../../store';
 
 import Client from '../Client';
 var viewer;
-var getToken = { accessToken: Client.getaccesstoken()};
 var explodeScale = 0;
 var startExplosion = null;
 var explosionReq;
@@ -54,17 +53,13 @@ async function getAccessToken(callback) {
   }
 }
 
-
-
-
 function launchViewer(div, urn, id) {
   tileId = id;
   var options = {
     'document': urn,
     env: 'AutodeskProduction2',
     api: 'streamingV2',  // for models uploaded to EMEA change this option to 'streamingV2_EU'
-    getAccessToken: getAccessToken,
-
+    getAccessToken: getAccessToken
   };
 
   var viewerElement = document.getElementById(div);
@@ -74,8 +69,7 @@ function launchViewer(div, urn, id) {
       options,
       function () {
         viewer.initialize();
-       
-        loadDocument(options.document);
+        loadDocument(options.document);       
       }
     );
 
@@ -91,8 +85,6 @@ function loadDocument(documentId){
       if (geometryItems.length > 0) {
         geometryItems.forEach(function (item, index) {
         });
-        viewer.prefs.tag('ignore-producer');
-        viewer.setTheme('light-theme');
         viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, onGeometryLoaded);
         viewer.addEventListener(Autodesk.Viewing.AGGREGATE_SELECTION_CHANGED_EVENT, debounce(() => {
           console.log('selection change')
@@ -105,9 +97,9 @@ function loadDocument(documentId){
             )
         }), 200);
 
+        //viewer.prefs.tag('ignore-producer');
+        // viewer.setLightPreset('Rim Highlights');
         viewer.loadModel (doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
-
-        
       }
     },
     function (errorMsg) { // onErrorCallback
@@ -128,6 +120,7 @@ function onGeometryLoaded(event) {
                 Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
                 onGeometryLoaded);
         viewer.fitToView();
+        viewer.setLightPreset('Rim Highlights');
         viewer.setQualityLevel(false,false); // Getting rid of Ambientshadows to false to avoid blackscreen problem in Viewer.
     }
 

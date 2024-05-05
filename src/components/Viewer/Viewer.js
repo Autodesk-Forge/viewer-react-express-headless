@@ -23,8 +23,8 @@ class Viewer extends Component {
 
     componentDidMount() {
         // RC Car Model
-        var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1JDJTIwQ2FyLmYzZA';
-        Helpers.launchViewer('viewerDiv', documentId , '0002');   
+        var documentId = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6dmlld2VyLXJvY2tzLXJlYWN0L1RWUi00LUN5Y2wtZW5naW5lLmYzZA';
+        Helpers.launchViewer('viewerDiv', documentId , '0003');   
           
     }
 

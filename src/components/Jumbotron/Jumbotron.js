@@ -240,7 +240,7 @@ class Jumbotron extends Component {
       <div className="forge-jumbotron">
         <Viewer />
         <div className="forge-logo">
-            <img src="images/forge-logo.png" alt="Autodesk Forge" />
+          <img src="https://cdn.autodesk.io/logo/black/stacked.png" alt="Autodesk Platform Services" height="50" />
         </div>
         <div className="container safari-only">
           <button className="forge-btn" onClick={this.onFullscreen}>

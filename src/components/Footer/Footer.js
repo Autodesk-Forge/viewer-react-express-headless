@@ -29,7 +29,7 @@ class Footer extends Component {
              <a href="https://github.com/jaimerosales/viewer-react-express-headless">View on GitHub <i className="fa fa-github"></i></a>
             </div>
             <div className="col-xs-6 footer-copyright">
-              &#169; 2016 Copyright Autodesk. All rights reserved.
+              &#169; 2024 Copyright Autodesk. All rights reserved.
             </div>
           </div>
         </div>
