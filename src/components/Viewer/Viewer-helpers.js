@@ -24,7 +24,6 @@ import { store } from '../../store';
 
 import Client from '../Client';
 var viewer;
-var getToken = { accessToken: Client.getaccesstoken()};
 var explodeScale = 0;
 var startExplosion = null;
 var explosionReq;
@@ -38,35 +37,51 @@ export var properties = {};
 
 
 
+//The Access Token Logic
+
+async function getAccessToken(callback) {
+  try {
+      const resp = await fetch('/token');
+      if (!resp.ok) {
+          throw new Error(await resp.text());
+      }
+      const { access_token, expires_in } = await resp.json();
+      callback(access_token, expires_in);
+  } catch (err) {
+      alert('Could not obtain access token. See the console for more details.');
+      console.error(err);
+  }
+}
+
 function launchViewer(div, urn, id) {
   tileId = id;
-  getToken.accessToken.then((token) => {
-    var options = {
-      'document': urn,
-      'env': 'AutodeskProduction',
-      'accessToken': token.access_token
-      // 'refreshToken': getForgeToken
-    };
+  var options = {
+    'document': urn,
+    env: 'AutodeskProduction2',
+    api: 'streamingV2',  // for models uploaded to EMEA change this option to 'streamingV2_EU'
+    getAccessToken: getAccessToken
+  };
 
-    var viewerElement = document.getElementById(div);
+  var viewerElement = document.getElementById(div);
     viewer = new Autodesk.Viewing.Viewer3D(viewerElement, {});
 
     Autodesk.Viewing.Initializer(
       options,
       function () {
         viewer.initialize();
-        viewer.prefs.tag('ignore-producer')
-        loadDocument(options.document);
+        loadDocument(options.document);       
       }
     );
-  })
+
 }
 
+
+//The load models function
 function loadDocument(documentId){
   Autodesk.Viewing.Document.load(
     documentId,
     function (doc) { // onLoadCallback
-      var geometryItems = Autodesk.Viewing.Document.getSubItemsWithProperties(doc.getRootItem(), {'type':'geometry'}, true);
+      var geometryItems = doc.getRoot().search({ type: 'geometry' });
       if (geometryItems.length > 0) {
         geometryItems.forEach(function (item, index) {
         });
@@ -82,7 +97,9 @@ function loadDocument(documentId){
             )
         }), 200);
 
-        viewer.load(doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
+        //viewer.prefs.tag('ignore-producer');
+        // viewer.setLightPreset('Rim Highlights');
+        viewer.loadModel (doc.getViewablePath(geometryItems[0])); // show 1st view on this document...
       }
     },
     function (errorMsg) { // onErrorCallback
@@ -90,6 +107,7 @@ function loadDocument(documentId){
     }
   )
 }
+
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -102,6 +120,7 @@ function onGeometryLoaded(event) {
                 Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
                 onGeometryLoaded);
         viewer.fitToView();
+        viewer.setLightPreset('Rim Highlights');
         viewer.setQualityLevel(false,false); // Getting rid of Ambientshadows to false to avoid blackscreen problem in Viewer.
     }
 
@@ -283,7 +302,7 @@ export function toggleRotation(cancelMotion) {
 
 const Helpers = {
   launchViewer,
-  loadDocument
+  loadDocument 
 };
 
 export default Helpers;

@@ -2,13 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="https://cdn.autodesk.io/favicon.ico">
     <!-- Meta tag to fix zoom out and zoom in problem in web-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/forge-icon.png">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/forge-icon.png">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"> -->
     <!-- The Viewer CSS -->
-    <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/style.min.css" type="text/css">
+    <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css" type="text/css">
 
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
@@ -19,11 +20,11 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Autodesk Forge Viewer</title>
+    <title>Autodesk Viewer</title>
   </head>
   <body>
   <!-- The Viewer JS -->
-    <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/viewer3D.js?v=v5.0"></script>
+  <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.min.js"></script>
     <div id="root"></div>
 
     <!--

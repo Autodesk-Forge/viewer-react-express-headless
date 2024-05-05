@@ -1,5 +1,5 @@
 .forge-gallery {
-  background-color: #3566CC;
+  background-color: #7b7b7b;
   padding-top: 3.5em;
 }
 
@@ -11,7 +11,7 @@
 
 .forge-gallery .tile .tile-avatar {
   border-radius: 5px;
-  box-shadow: 1px 1px 5px 1px rgb(27, 52, 106);
+  box-shadow: 1px 1px 5px 1px rgb(73, 77, 84);
   height: auto;
   max-width: 100%;
 }

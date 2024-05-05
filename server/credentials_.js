@@ -21,19 +21,19 @@ var credentials ={
 	credentials: {
 		// Replace placeholder below by the Consumer Key and Consumer Secret you got from
 		// http://developer.autodesk.com/ for the production server
-		client_id: process.env.FORGE_CLIENT_ID || '<replace with your consumer key>',
-		client_secret: process.env.FORGE_CLIENT_SECRET || '<replace with your consumer secret>',
+		client_id: process.env.FORGE_CLIENT_ID || 'a8y1Hg34MyzXIM2DIX2tNeoGpph0e1fi',
+		client_secret: process.env.FORGE_CLIENT_SECRET || '3evz9U5dkmsNnYHO',
 		grant_type: 'client_credentials',
 		scope: 'viewables:read', // Setup the needed scopes for authorizing your Token
-		callbackUrl: process.env.CALLBACK_URL || '<replace with your callbackUrl>'
+		callbackUrl: process.env.CALLBACK_URL || 'http://localhost:3000/oauth/callback'
 	},
 	
 	// If you which to use the Autodesk View & Data API on the staging server, change this url
 	BaseUrl: 'https://developer.api.autodesk.com',
-	Version: 'v1'
+	Version: 'v2' // Need to migrate to v2 
 } ;
 
-credentials.Authentication =credentials.BaseUrl + '/authentication/' + credentials.Version + '/authenticate'
-
+credentials.Authentication =credentials.BaseUrl + '/authentication/' + credentials.Version + '/token'
+                                                     
 
 module.exports = credentials;

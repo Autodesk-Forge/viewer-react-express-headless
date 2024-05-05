@@ -124,9 +124,9 @@ and (max-width : 736px)*/
   z-index: 2;
 }
 
-.forge-jumbotron .forge-logo img {
+/* .forge-jumbotron .forge-logo img {
   width: 300px;
-}
+} */
 
 
 .forge-jumbotron .forge-viewer {
