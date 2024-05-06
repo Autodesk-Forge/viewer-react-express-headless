@@ -22,7 +22,7 @@ import { debounce, uniq } from 'lodash';
 import { actions } from '../../actions';
 import { store } from '../../store';
 
-import Client from '../Client';
+//import Client from '../Client';
 var viewer;
 var explodeScale = 0;
 var startExplosion = null;
